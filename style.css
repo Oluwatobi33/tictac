@@ -1,0 +1,10 @@
+body {
+    background-color: linear-gradient(red, yellow);
+   
+}
+tr {
+    height: 90px;
+    justify-items: center;
+    /* padding: 0px 13px; */
+    font-size: 45px;
+}
