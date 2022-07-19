@@ -53,7 +53,7 @@ const sa = (e) => {
     console.log(take);
 }
 
- const now = ()=>{
+   const now = ()=>{
    var Fr = ft.innerText = fp.value;
    var Sr = lp.innerText = sp.value;
  }
