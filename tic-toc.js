@@ -36,17 +36,17 @@ const sa = (e) => {
     let i = nine.innerHTML;
 
     if ((a == "x" && b == "x" && c == "x")||((d == "x" && d1 == "x" && f == "x"))|| ((g== "x" && h== "x" && i== "x"))) {
-        alert(ft.innerText + " win")
+        alert(ft.innerText + " win round")
     }
     else if ((a == "o" && b == "o"&& c == "o") ||((d == "o" && d1 == "o" && f == "o"))|| ((g == "o" && h == "o" && i== "o")))
     {
-        alert(lp.innerText + " win") 
+        alert(lp.innerText + " win round") 
     } 
-    else if((a == "x" && d1 == "x" && i== "x") || ((a == "x" && d== "x" && g== "x")) || ((c == "x" && f == "x" && i== "x" )) ||((c == "x" && d1 == "x" && g == "x"))){
-        alert(ft.innerText + " win ");
+    else if((a == "x" && d1 == "x" && i== "x") || ((a == "x" && d== "x" && g== "x"))  || ((b == "x" && d1 == "x" && h == "x" )) || ((c == "x" && f == "x" && i== "x" )) ||((c == "x" && d1 == "x" && g == "x"))){
+        alert(ft.innerText + " win round");
     }
-    else if((a == "o" && d1 == "o" && i== "o") || ((a == "o" && d== "o" && g== "o")) || ((c == "o" && f == "o" && i== "o" )) ||((c == "o" && d1 == "o" && g == "o"))){
-        alert(lp.innerText + "win ");
+    else if((a == "o" && d1 == "o" && i== "o") || ((a == "o" && d== "o" && g== "o")) || ((b == "o" && d1 == "o" && h == "o" )) || ((c == "o" && f == "o" && i== "o" )) ||((c == "o" && d1 == "o" && g == "o"))){
+        alert(lp.innerText + "win round");
     } 
 
     let take = document.getElementById("score").innerText = ft.innerText
