@@ -6,6 +6,9 @@ const pau =()=>{
     var ans = document.getElementById("mus");
     ans.pause();
 }
+const re = ()=>{
+  location.reload()
+}
 let initialValue = "x"
 const sa = (e) => {
     if (initialValue == "x" && e.target.innerText == "") {
@@ -52,7 +55,6 @@ const sa = (e) => {
     let take = document.getElementById("score").innerText = ft.innerText
     console.log(take);
 }
-
    const now = ()=>{
    var Fr = ft.innerText = fp.value;
    var Sr = lp.innerText = sp.value;
