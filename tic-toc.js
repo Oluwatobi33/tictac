@@ -112,19 +112,19 @@ const sa = (e) => {
     nine.innerHTML="";
 }
 const re = ()=>{
-    if (fp.value !== "" && sp.value !== ""){
-        fp.value = ""
-        sp.value = ""
-        ft.innerText = ""
-        lp.innerText = ""
-        one.innerHTML = ""
-        four.innerHTML = "";
-        three.innerHTML = "";
-        five.innerHTML = "";
-         six.innerHTML = "";
-         seven.innerHTML = "";
-         eight.innerHTML = "";
-         nine.innerHTML = "";
-    }
-    
+    // if (fp.value !== "" && sp.value !== ""){
+    //     fp.value = ""
+    //     sp.value = ""
+    //     ft.innerText = ""
+    //     lp.innerText = ""
+    //     one.innerHTML = ""
+    //     four.innerHTML = "";
+    //     three.innerHTML = "";
+    //     five.innerHTML = "";
+    //      six.innerHTML = "";
+    //      seven.innerHTML = "";
+    //      eight.innerHTML = "";
+    //      nine.innerHTML = "";
+    // }
+    location.reload()
 }
