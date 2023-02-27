@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TIC TAC TO</title>
+  <link rel="stylesheet" href="./bootstrap-4.0.0-dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-12 mb-4">
+        <div class="inline">
+          <h3 style="font-style: italic" class="mx-3">Tic Tac Toe Game</h3>
+          <button type="button" onclick="dis()" class="btn btn-outline-success btn-lg mx-3">
+            PlayMusic
+          </button>
+          <button type="button" onclick="pau()" class="btn btn-outline-danger btn-lg">
+            PauseMusic
+          </button>
+          <audio id="mus"
+            src="./music/Mavins_-_Overdose_ft_Ladipoe_Ayra_Starr_Crayon_Magixx_Boy_Boy_Spyce__VistaNaija.Com.mp3"
+            loop></audio>
+          <div id="Enter" class="container" style="margin-top: 14px; font-size: 34px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <div class="border border-dark px-4 bg-success py-5">
+          <label for="" class="my-2 text-white">FirstPlayer</label>
+          <input type="text" placeholder="FirstPlayer" id="fp" class="form-control" />
+          <div id="err1" class="okay"></div>
+          <label for="" class="my-2 text-white">SecondPlayer</label>
+          <input type="text" placeholder="SecondPlayer" id="sp" class="form-control" />
+          <div id="err2" class="okay"></div>
+          <button type="submit" class="btn btn-primary mt-3" onclick="now()">
+            Start
+          </button>
+          <button type="submit" class="btn btn-light mt-3" onclick="re()">
+            Restart
+          </button>
+          <button type="submit" class="btn btn-dark mt-3" onclick="ce()">
+            Continue
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <marquee behavior="" direction="left">
+          <h3 id="won"></h3>
+          <audio id="vic"
+            src="./music/Mavins_-_Overdose_ft_Ladipoe_Ayra_Starr_Crayon_Magixx_Boy_Boy_Spyce__VistaNaija.Com.mp3"
+            loop></audio>
+        </marquee>
+        <table class="table my-4 table-bordered">
+          <tbody>
+            <tr id="tr" class="border border-light">
+              <td onclick="sa(event)" id="one1" class="bg-success"></td>
+              <td onclick="sa(event)" id="one2" class="bg-dark"></td>
+              <td onclick="sa(event)" id="one3" class="bg-dark"></td>
+            </tr>
+            <tr id="tr">
+              <td onclick="sa(event)" id="two1" class="bg-dark"></td>
+              <td onclick="sa(event)" id="two2" class="bg-success"></td>
+              <td onclick="sa(event)" id="two3" class="bg-dark"></td>
+            </tr>
+            <tr id="tr">
+              <td onclick="sa(event)" id="three1" class="bg-dark"></td>
+              <td onclick="sa(event)" id="three2" class="bg-dark"></td>
+              <td onclick="sa(event)" id="three3" class="bg-success"></td>
+            </tr>
+            <div id="score"></div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 border border-none" style="background: linear-gradient(red, yellow)">
+        <div class="py-5">
+          <h3 class="text-center fs-5 fw-bold mb-2">ScoreSheet</h3>
+          <div class="row">
+            <div class="col-4">
+              <div class="float-inline">
+                <label for="">Name Of The Players</label>
+                <div type="text" id="ft" class="border border-0 py-3 px-4 mb-4 bg-white" style="font-style: italic">
+                </div>
+                <div type="text" id="lp" class="border border-0 border-dark py-3 px-4 bg-white"
+                  style="font-style: italic"></div>
+              </div>
+            </div>
+            <div class="col-2">
+              <label>ID for Players</label>
+              <h2>X</h2>
+              <h2>O</h2>
+            </div>
+            <div class="col-6">
+              <label>Score</label>
+              <input type="text" id="sc1" value="0" class="form-control" /><br />
+              <input type="text" id="sc2" value="0" class="form-control" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="tic-toc.js"></script>
+  <script src="./bootstrap-4.0.0-dist/js/bootstrap.js"></script>
+</body>
+
+</html>
