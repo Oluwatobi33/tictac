@@ -1,132 +1,112 @@
-const dis = () => {
-    var ans = document.getElementById("mus");
-    ans.play();
-}
-const pau = () => {
-    var ans = document.getElementById("mus");
-    ans.pause();
-}
 
-const now = () => {
-    var Fr = fp.value;
-    var Sr = sp.value;
-    if (fp.value == "" && sp.value == "") {
-        err1.innerText = "Enter the value of firstplayer";
-        err1.style.color = "red";
-        err2.innerText = "Enter the value of firstplayer";
-        err2.style.color = "red";
-    } else if (fp.value !== "" && sp.value !== "") {
-        ft.innerText = fp.value;
-        lp.innerText = sp.value;
+  const dis = () => document.getElementById("mus").play();
+  const pau = () => document.getElementById("mus").pause();
 
-    }
-}
-let initialValue = "x"
-const sa = (e) => {
-    if (fp.value != "" && sp.value != "") {
-        if (initialValue == "x" && e.target.innerText == "") {
-            e.target.innerText = "x";
-            initialValue = "o";
-        } else if (initialValue == "o" && e.target.innerText == "") {
-            e.target.innerText = "o";
-            initialValue = "x";
-        }
-        let one = document.getElementById("one1");
-        let two = document.getElementById("one2");
-        let three = document.getElementById("one3");
-        let four = document.getElementById("two1");
-        let five = document.getElementById("two2");
-        let six = document.getElementById("two3");
-        let seven = document.getElementById("three1");
-        let eight = document.getElementById("three2");
-        let nine = document.getElementById("three3");
+  const boardIds = [
+    "one1", "one2", "one3",
+    "two1", "two2", "two3",
+    "three1", "three2", "three3"
+  ];
 
-        let a = one.innerHTML;
-        let b = two.innerHTML;
-        let c = three.innerHTML;
-        let d = four.innerHTML;
-        let d1 = five.innerHTML;
-        let f = six.innerHTML;
-        let g = seven.innerHTML;
-        let h = eight.innerHTML;
-        let i = nine.innerHTML;
-        if ((a == "x" && b == "x" && c == "x") || ((d == "x" && d1 == "x" && f == "x")) || ((g == "x" && h == "x" && i == "x"))) {
-            setTimeout(() => {
-                initialValue = ""
-                var v1 = document.getElementById("vic")
-                v1.play()
-                won.innerHTML = ft.innerText + "" + " win round"
-                sc1.value++
-            }, 50);
-        }
-        else if ((a == "o" && b == "o" && c == "o") || ((d == "o" && d1 == "o" && f == "o")) || ((g == "o" && h == "o" && i == "o"))) {
-            setTimeout(() => {
-                initialValue = ""
-                var v1 = document.getElementById("vic")
-                v1.play()
-                won.innerHTML = lp.innerText + "" + " win round"
-                sc1.value++
-            }, 50);
-        }
-        else if ((a == "x" && d1 == "x" && i == "x") || ((a == "x" && d == "x" && g == "x")) || ((b == "x" && d1 == "x" && h == "x")) || ((c == "x" && f == "x" && i == "x")) || ((c == "x" && d1 == "x" && g == "x"))) {
+  let currentPlayer = "x";
 
-            setTimeout(() => {
-                initialValue = ""
-                var v1 = document.getElementById("vic")
-                v1.play()
-                won.innerHTML = ft.innerText + "" + " win round";
-                sc1.value++
-            }, 50);
-        }
-        else if ((a == "o" && d1 == "o" && i == "o") || ((a == "o" && d == "o" && g == "o")) || ((b == "o" && d1 == "o" && h == "o")) || ((c == "o" && f == "o" && i == "o")) || ((c == "o" && d1 == "o" && g == "o"))) {
-
-            setTimeout(() => {
-                initialValue = ""
-                var v1 = document.getElementById("vic")
-                v1.play()
-                won.innerHTML = lp.innerText + "" + "win round";
-                sc1.value++
-            }, 50);
-        }
-
-        let take = document.getElementById("score").innerText = ft.innerText
-        console.log(take);
+  const now = () => {
+    const fpVal = fp.value.trim();
+    const spVal = sp.value.trim();
+    if (!fpVal || !spVal) {
+      err1.innerText = !fpVal ? "Enter First Player" : "";
+      err2.innerText = !spVal ? "Enter Second Player" : "";
+      err1.style.color = err2.style.color = "red";
     } else {
-        var e = document.getElementById("Enter")
-        e.innerHTML = "Enter the value of the players"
-        e.style.color = "Red"
+      ft.innerText = fpVal;
+      lp.innerText = spVal;
+      err1.innerText = err2.innerText = "";
+      currentPlayer = "x";
+      re(); // clear board
     }
+  };
 
-}
-const ce = () => {
-    initialValue = "x";
-    one.innerHTML = "";
-    two.innerHTML = "";
-    three.innerHTM = "";
-    four.innerHTML = "";
-    five.innerHTML = "";
-    six.innerHTML = "";
-    seven.innerHTML = "";
-    eight.innerHTML = "";
-    nine.innerHTML = "";
-}
-const re = () => {
-    // if (fp.value !== "" && sp.value !== ""){
-    //     fp.value = ""
-    //     sp.value = ""
-    //     ft.innerText = ""
-    //     lp.innerText = ""
-    //     one.innerHTML = ""
-    //     four.innerHTML = "";
-    //     three.innerHTML = "";
-    //     five.innerHTML = "";
-    //      six.innerHTML = "";
-    //      seven.innerHTML = "";
-    //      eight.innerHTML = "";
-    //      nine.innerHTML = "";
-    // }
+  const checkWin = () => {
+    const board = boardIds.map(id => document.getElementById(id).innerText);
+    const winPatterns = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
+    ];
 
-    location.reload()
-    won.innerHTML = lp.innerText + "" + " win round"
-    won.innerHTML = ft.innerText + "" + " win round";
-}
+    for (const [a, b, c] of winPatterns) {
+      if (board[a] && board[a] === board[b] && board[b] === board[c]) {
+        return board[a]; // 'x' or 'o'
+      }
+    }
+    return board.every(cell => cell) ? "draw" : null;
+  };
+
+  const stopVictoryMusic = () => {
+    const vicAudio = document.getElementById("vic");
+    vicAudio.pause();
+    vicAudio.currentTime = 0;
+  };
+
+  const sa = (e) => {
+    if (!fp.value || !sp.value || currentPlayer === "") return;
+
+    if (e.target.innerText === "") {
+      e.target.innerText = currentPlayer;
+      const result = checkWin();
+
+      if (result) {
+        stopVictoryMusic();
+        const vicAudio = document.getElementById("vic");
+        vicAudio.play();
+
+        if (result === "x") {
+          won.innerText = `${ft.innerText} wins the round!`;
+          sc1.value = +sc1.value + 1;
+        } else if (result === "o") {
+          won.innerText = `${lp.innerText} wins the round!`;
+          sc2.value = +sc2.value + 1;
+        } else {
+          won.innerText = "NO winner!";
+        }
+
+        currentPlayer = ""; // Game over, disable moves
+      } else {
+        currentPlayer = currentPlayer === "x" ? "o" : "x";
+      }
+    }
+  };
+
+  const re = () => {
+    boardIds.forEach(id => {
+      document.getElementById(id).innerText = "";
+    });
+    currentPlayer = "x";
+    won.innerText = "";
+    stopVictoryMusic();
+  };
+
+  const ce = () => {
+    boardIds.forEach(id => {
+      document.getElementById(id).innerText = "";
+    });
+    currentPlayer = currentPlayer === "" ? "x" : currentPlayer;
+    won.innerText = "";
+    stopVictoryMusic();
+  };
+
+  const restartAll = () => {
+    // Full reset
+    fp.value = sp.value = "";
+    ft.innerText = lp.innerText = "";
+    sc1.value = sc2.value = 0;
+    currentPlayer = "x";
+    err1.innerText = err2.innerText = "";
+    won.innerText = "";
+    stopVictoryMusic();
+    boardIds.forEach(id => document.getElementById(id).innerText = "");
+  };
+
+  // Replace `re()` with full reset in button if desired
+  document.querySelector('button.btn-light').onclick = restartAll;
+
